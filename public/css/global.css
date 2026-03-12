@@ -170,6 +170,59 @@ nav ul li a.active {
   color: #475569;
 }
 
+/* ===== LUCIDE ICONS ===== */
+[data-lucide] {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.unidade-icone [data-lucide] {
+  width: 36px;
+  height: 36px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.icon-xs {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.5;
+  vertical-align: middle;
+}
+
+.verde-ic  { color: #16a34a; }
+.vermelho-ic { color: #dc2626; }
+
+.sobre-card-icon [data-lucide] {
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.8;
+}
+
+.sobre-email-btn [data-lucide],
+.btn-formulario [data-lucide] {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-right: 5px;
+  stroke-width: 2.2;
+}
+
+.formulario-icone [data-lucide] {
+  width: 44px;
+  height: 44px;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
   .header-container {
