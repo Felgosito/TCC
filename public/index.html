@@ -23,7 +23,24 @@
             <fieldset>
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
-                    <input type="text" id="endereco" placeholder="Ex: Av. São Luís Rei de França, Olho D'agua, São Luís">
+                    <input type="text" id="endereco" placeholder="Ex: Rua das Flores, Bairro Centro, São Luís">
+                    <div class="endereco-dica">
+                        <div class="dica-exemplos">
+                            <span class="dica-titulo">💡 Como digitar corretamente:</span>
+                            <div class="dica-linha correto">
+                                <span class="dica-badge ok">✓ Correto</span>
+                                <span>Rua das Flores, <strong>Bairro Centro</strong>, São Luís</span>
+                            </div>
+                            <div class="dica-linha correto">
+                                <span class="dica-badge ok">✓ Correto</span>
+                                <span>Av. Jerecó, <strong>123</strong>, Cohama, São Luís</span>
+                            </div>
+                            <div class="dica-linha errado">
+                                <span class="dica-badge erro">✗ Incompleto</span>
+                                <span>Rua das Flores <em>(sem bairro ou número)</em></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="tipo">Tipo de estabelecimento</label>
