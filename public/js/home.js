@@ -64,13 +64,43 @@ async function buscarUnidades(e) {
   const raio = document.getElementById('distancia').value;
 
   const resultsContainer = document.querySelector('.results-container');
+
+  // Valida endereço vazio
+  if (!endereco) {
+    resultsContainer.innerHTML = '';
+    document.getElementById('endereco').classList.add('input-erro');
+    return;
+  }
+
+  // Valida se tem vírgula (bairro ou número)
+  if (!endereco.includes(',')) {
+    const inputEndereco = document.getElementById('endereco');
+    inputEndereco.classList.add('input-erro');
+
+    const avisoAnterior = document.querySelector('.aviso-endereco');
+    if (avisoAnterior) avisoAnterior.remove();
+
+    const aviso = document.createElement('div');
+    aviso.className = 'aviso-endereco';
+    aviso.innerHTML = `
+      <span>⚠️</span>
+      <div>Endereço incompleto. Inclua o <strong>bairro ou número</strong> após uma vírgula.<br>
+      <em>Exemplo: Rua das Flores, <strong>Bairro Centro</strong>, São Luís</em></div>
+    `;
+    inputEndereco.after(aviso);
+
+    resultsContainer.innerHTML = '';
+    return;
+  }
+
+  // Remove erro visual se endereço estiver correto
+  document.getElementById('endereco').classList.remove('input-erro');
+  const avisoAnterior = document.querySelector('.aviso-endereco');
+  if (avisoAnterior) avisoAnterior.remove();
+
   resultsContainer.innerHTML = '<div class="loading">Buscando unidades próximas...</div>';
 
   try {
-    if (!endereco) {
-      throw new Error('Por favor, digite um endereço válido');
-    }
-
     const coords = await obterCoordenadasPorEndereco(endereco);
     
     const params = new URLSearchParams({
@@ -102,6 +132,7 @@ async function buscarUnidades(e) {
     resultsContainer.innerHTML = `<div class="error">${error.message}</div>`;
   }
 }
+
 
 // Função para exibir resultados
 function exibirResultados(unidades) {
