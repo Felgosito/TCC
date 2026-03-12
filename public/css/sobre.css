@@ -50,13 +50,12 @@ main {
 
 .sobre-container {
     max-width: 860px;
-    margin: 2.5rem auto 4rem;   
+    margin: 2.5rem auto 4rem;
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
-
 
 /* ===== CARDS ===== */
 .sobre-card {
@@ -143,11 +142,34 @@ main {
     letter-spacing: 0.5px;
 }
 
+/* ===== BOTÕES DE CONTATO E FORMULÁRIO ===== */
+.sobre-email-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #1a73e8;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.sobre-email-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+.sobre-email-btn.verde {
+    background: #059669;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
     .sobre-hero { padding: 2.5rem 1.2rem 4rem; }
     .sobre-hero h1 { font-size: 2.5rem; }
-    .sobre-container { margin: -1.5rem 0 2rem; padding: 0 1rem; }
+    .sobre-container { margin: 1.5rem 0 2rem; padding: 0 1rem; }
     .sobre-card { flex-direction: column; gap: 1rem; padding: 1.5rem; }
     .sobre-stats { grid-template-columns: repeat(2, 1fr); }
 }
