@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Saude+</title>
+    <title>UBS Local - Encontre unidades de saúde próximas</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
@@ -10,32 +10,31 @@
     <div id="header"></div>
 
     <div class="main-container">
-        
         <div class="imagem-localiza">
             <img src="imagens/img.jpeg" alt="localiza">
         </div>
         
         <h2>Encontre unidades de saúde próximas a você</h2>
+        <p>Busque UBS de saúde por endereço ou sua localização atual</p>
         
         <form id="form-busca">
-            
             <fieldset>
                 <div class="form-group">
                     <label for="endereco">Endereço</label>
                     <input type="text" id="endereco" placeholder="Ex: Rua das Flores, Bairro Centro, São Luís">
                     <div class="endereco-dica">
                         <div class="dica-exemplos">
-                            <span class="dica-titulo">💡 Como digitar corretamente:</span>
+                            <span class="dica-titulo"><i data-lucide="info" class="icon-xs"></i> Como digitar corretamente:</span>
                             <div class="dica-linha correto">
-                                <span class="dica-badge ok">✓ Correto</span>
+                                <span class="dica-badge ok"><i data-lucide="check" class="icon-xs"></i> Correto</span>
                                 <span>Rua das Flores, <strong>Bairro Centro</strong>, São Luís</span>
                             </div>
                             <div class="dica-linha correto">
-                                <span class="dica-badge ok">✓ Correto</span>
+                                <span class="dica-badge ok"><i data-lucide="check" class="icon-xs"></i> Correto</span>
                                 <span>Av. Jereçó, <strong>123</strong>, Cohama, São Luís</span>
                             </div>
                             <div class="dica-linha errado">
-                                <span class="dica-badge erro">✗ Incompleto</span>
+                                <span class="dica-badge erro"><i data-lucide="x" class="icon-xs"></i> Incompleto</span>
                                 <span>Rua das Flores <em>(sem bairro ou número)</em></span>
                             </div>
                         </div>
@@ -43,15 +42,11 @@
                 </div>
                 <div class="form-group">
                     <label for="tipo">Tipo de estabelecimento</label>
-                    <select id="tipo">
-                        <option value="">Todos os tipos</option>
-                    </select>
+                    <select id="tipo"><option value="">Todos os tipos</option></select>
                 </div>
                 <div class="form-group">
                     <label for="especialidade">Especialidade (opcional)</label>
-                    <select id="especialidade">
-                        <option value="">Qualquer especialidade</option>
-                    </select>
+                    <select id="especialidade"><option value="">Qualquer especialidade</option></select>
                 </div>
                 <div class="form-group">
                     <label for="distancia">Distância máxima</label>
@@ -62,9 +57,7 @@
                     </select>
                 </div>
             </fieldset>
-
-            <button type="submit">Buscar unidades</button>
-
+            <button type="submit"><i data-lucide="search"></i> Buscar unidades</button>
         </form>
     </div>
 
@@ -72,25 +65,20 @@
         <h2>Unidades de saúde próximas</h2>
         <div class="order-by">
             <label for="ordenar">Ordenar por:</label>
-            <select id="ordenar">
-                <option>Mais próximo</option>
-            </select>
+            <select id="ordenar"><option>Mais próximo</option></select>
         </div>
-        <div class="results-container">
-            <!-- Resultados serão inseridos aqui pelo JS -->
-        </div>
+        <div class="results-container"></div>
     </div>
 
-    <!-- SEÇÃO FORMULÁRIO DE PESQUISA -->
     <section class="secao-formulario">
         <div class="formulario-content">
-            <div class="formulario-icone">📋</div>
+            <div class="formulario-icone"><i data-lucide="clipboard-list"></i></div>
             <div class="formulario-texto">
                 <h2>Ajude na pesquisa!</h2>
                 <p>Usou o Saúde+? Compartilhe sua experiência respondendo ao formulário. Sua opinião é essencial para melhorar o sistema e contribui diretamente com o TCC.</p>
             </div>
             <a href="https://forms.gle/Q9jz47neXnYEgPXX9" target="_blank" rel="noopener" class="btn-formulario">
-                Responder formulário →
+                <i data-lucide="external-link"></i> Responder formulário
             </a>
         </div>
     </section>
@@ -98,5 +86,7 @@
     <div id="footer"></div>
     <script src="components/include-header-footer.js"></script>
     <script src="js/home.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
