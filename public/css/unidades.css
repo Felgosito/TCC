@@ -71,12 +71,16 @@ main { margin: 0; padding: 0; }
     color: #fff;
 }
 
-.unidade-card-header.azul    { background: linear-gradient(90deg, #1558b0, #1a73e8); }
-.unidade-card-header.laranja { background: linear-gradient(90deg, #c2410c, #ea580c); }
-.unidade-card-header.vermelho{ background: linear-gradient(90deg, #991b1b, #dc2626); }
-.unidade-card-header.rosa    { background: linear-gradient(90deg, #9d174d, #db2777); }
-.unidade-card-header.roxo    { background: linear-gradient(90deg, #5b21b6, #7c3aed); }
-.unidade-card-header.verde   { background: linear-gradient(90deg, #065f46, #059669); }
+.unidade-card-header.azul          { background: linear-gradient(90deg, #1558b0, #1a73e8); }
+.unidade-card-header.laranja       { background: linear-gradient(90deg, #c2410c, #ea580c); }
+.unidade-card-header.vermelho      { background: linear-gradient(90deg, #991b1b, #dc2626); }
+.unidade-card-header.vermelho-escuro { background: linear-gradient(90deg, #7f1d1d, #991b1b); }
+.unidade-card-header.rosa          { background: linear-gradient(90deg, #9d174d, #db2777); }
+.unidade-card-header.roxo          { background: linear-gradient(90deg, #5b21b6, #7c3aed); }
+.unidade-card-header.verde         { background: linear-gradient(90deg, #065f46, #059669); }
+.unidade-card-header.ciano         { background: linear-gradient(90deg, #0e7490, #0891b2); }
+.unidade-card-header.amarelo       { background: linear-gradient(90deg, #b45309, #d97706); }
+.unidade-card-header.cinza         { background: linear-gradient(90deg, #374151, #4b5563); }
 
 .unidade-icone {
     font-size: 2.5rem;
@@ -198,12 +202,16 @@ main { margin: 0; padding: 0; }
     color: #fff;
 }
 
-.badge.azul     { background: #1a73e8; }
-.badge.laranja  { background: #ea580c; }
-.badge.vermelho { background: #dc2626; }
-.badge.rosa     { background: #db2777; }
-.badge.roxo     { background: #7c3aed; }
-.badge.verde    { background: #059669; }
+.badge.azul           { background: #1a73e8; }
+.badge.laranja        { background: #ea580c; }
+.badge.vermelho       { background: #dc2626; }
+.badge.vermelho-escuro{ background: #991b1b; }
+.badge.rosa           { background: #db2777; }
+.badge.roxo           { background: #7c3aed; }
+.badge.verde          { background: #059669; }
+.badge.ciano          { background: #0891b2; }
+.badge.amarelo        { background: #d97706; }
+.badge.cinza          { background: #4b5563; }
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
