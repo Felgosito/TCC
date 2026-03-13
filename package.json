@@ -8,6 +8,7 @@
     "deploy": "vercel deploy --prod"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "node-fetch": "^3.3.2",
