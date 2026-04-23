@@ -446,3 +446,26 @@ button:active { transform: translateY(0); }
   .dica-linha { flex-wrap: wrap; }
   .secao-formulario { padding: 2rem 1.2rem; }
 }
+
+.btn-especialidades svg {
+  transition: transform 0.2s ease;
+}
+
+.btn-especialidades {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #555;
+  padding: 4px 0;
+  margin-top: 6px;
+}
+
+.especialidades-tags {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
