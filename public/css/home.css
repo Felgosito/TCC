@@ -447,25 +447,29 @@ button:active { transform: translateY(0); }
   .secao-formulario { padding: 2rem 1.2rem; }
 }
 
-.btn-especialidades svg {
-  transition: transform 0.2s ease;
-}
-
+/* ===== BOTÃO ESPECIALIDADES ===== */
 .btn-especialidades {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 0.8rem;
-  color: #555;
-  padding: 4px 0;
-  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0369a1;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.btn-especialidades svg {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .especialidades-tags {
+  display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
+  gap: 4px;
+  margin-top: 6px;
 }
