@@ -3,6 +3,10 @@ import pool from '../db/pool.js';
 export default async function handler(req, res) {
   const { lat, lng, raio = 5000, tipo, especialidade } = req.query;
 
+  if (!lat || !lng) {
+    return res.status(400).json({ erro: 'Latitude e longitude s\u00e3o obrigat\u00f3rios' });
+  }
+
   try {
     let query = `
       SELECT 
@@ -19,28 +23,24 @@ export default async function handler(req, res) {
       FROM unidades_saude u
     `;
 
-    const params = [lng, lat, raio];
+    const params = [parseFloat(lng), parseFloat(lat), parseFloat(raio)];
     let conditions = [];
 
-    // Adiciona JOIN se houver especialidade
     if (especialidade) {
       query += ` JOIN unidade_servico us ON u.id = us.unidade_id`;
     }
 
-    // Condição principal (geográfica)
     conditions.push(`ST_DWithin(u.coordenadas::GEOGRAPHY, ST_MakePoint($1, $2)::GEOGRAPHY, $3)`);
 
-    // Adiciona filtros opcionais
     if (tipo) {
       conditions.push(`u.tipo_id = $${params.length + 1}`);
-      params.push(tipo);
+      params.push(parseInt(tipo));
     }
     if (especialidade) {
       conditions.push(`us.servico_id = $${params.length + 1}`);
-      params.push(especialidade);
+      params.push(parseInt(especialidade));
     }
 
-    // Combina condições e finaliza query
     query += ` WHERE ${conditions.join(' AND ')}`;
     query += ` ORDER BY distancia LIMIT 20`;
 
@@ -48,7 +48,8 @@ export default async function handler(req, res) {
     res.status(200).json(rows);
 
   } catch (error) {
-    console.error('Erro na busca:', error);
-    res.status(500).json({ erro: 'Falha na busca' });
+    console.error('Erro na busca:', error.message);
+    // Retorna o erro real para facilitar diagn\u00f3stico
+    res.status(500).json({ erro: error.message });
   }
 }
