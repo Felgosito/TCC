@@ -241,19 +241,55 @@ nav ul li a.active {
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
+  header {
+    height: auto;
+    padding: 0.8rem 1rem;
+  }
+
   .header-container {
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 1rem 0;
+    gap: 0.6rem;
+    padding: 0;
     height: auto;
   }
+
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 0.3rem;
   }
+
   nav ul li a {
-    font-size: 0.85rem;
-    padding: 6px 12px;
+    font-size: 0.82rem;
+    padding: 5px 10px;
   }
-  .footer-container { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer {
+    padding: 2rem 1.2rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+  }
+
+  nav ul li a {
+    font-size: 0.78rem;
+    padding: 4px 8px;
+  }
 }
