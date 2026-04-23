@@ -13,9 +13,9 @@
 }
 
 body {
-    background: var(--fundo);
-    margin: 0;
-    padding: 0;
+  background: var(--fundo);
+  margin: 0;
+  padding: 0;
 }
 
 .main-container {
@@ -27,9 +27,7 @@ body {
   box-shadow: 0 8px 32px rgba(26,115,232,0.13);
 }
 
-.main-container img {
-  display: none;
-}
+.main-container img { display: none; }
 
 .main-container > h2 {
   font-size: 1.2rem;
@@ -127,7 +125,6 @@ fieldset {
 }
 
 .dica-linha:last-child { margin-bottom: 0; }
-
 .dica-linha strong { color: #1a73e8; }
 .dica-linha em { color: #94a3b8; font-style: normal; }
 
@@ -219,60 +216,150 @@ button:active { transform: translateY(0); }
   margin: 0 12%;
 }
 
-/* ===== CARDS ===== */
+/* ===== CARDS REDESENHADOS ===== */
 .result-card {
   background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(26,115,232,0.09);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(26,115,232,0.08);
   border: 1px solid #e2e8f0;
-  width: 260px;
-  min-height: 220px;
+  width: 280px;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .result-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26,115,232,0.16);
+  box-shadow: 0 10px 28px rgba(26,115,232,0.16);
 }
 
+/* ===== HEADER DO CARD ===== */
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 16px 16px 10px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .card-header h3 {
-  font-size: 0.97rem;
+  font-size: 0.92rem;
   color: #1e293b;
   font-weight: 700;
   margin: 0;
+  line-height: 1.35;
+  flex: 1;
 }
 
+/* ===== DISTÂNCIA — sem quebra de linha ===== */
 .distance {
   background: #e8f0fe;
   color: #1a73e8;
   font-size: 0.78rem;
-  font-weight: 600;
-  padding: 3px 9px;
+  font-weight: 700;
+  padding: 4px 10px;
   border-radius: 20px;
+  white-space: nowrap;    /* nunca quebra */
+  flex-shrink: 0;         /* nunca encolhe */
+  line-height: 1.4;
+  align-self: flex-start;
+}
+
+/* ===== CORPO DO CARD ===== */
+.card-body {
+  padding: 12px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
 }
 
 .address {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
   color: #64748b;
-  font-size: 0.85rem;
-  margin-bottom: 8px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0;
 }
 
-.details p {
-  margin: 4px 0;
-  font-size: 0.85rem;
+.address svg {
+  margin-top: 2px;
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+/* ===== INFORMAÇÕES (telefone, horário) ===== */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.info-linha {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
   color: #475569;
+  margin: 0;
 }
 
+.info-linha svg { flex-shrink: 0; color: #94a3b8; }
+
+/* ===== TAGS DE ESPECIALIDADES ===== */
+.especialidades-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.tag-esp {
+  background: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 20px;
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  white-space: nowrap;
+  line-height: 1.5;
+}
+
+.tag-mais {
+  background: #f1f5f9;
+  color: #64748b;
+  border-color: #cbd5e1;
+}
+
+/* ===== BOTÃO GOOGLE MAPS ===== */
+.btn-maps {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  color: #1a73e8;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1.5px solid #bfdbfe;
+  background: #eff6ff;
+  transition: background 0.18s, border-color 0.18s;
+  align-self: flex-start;
+}
+
+.btn-maps:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}
+
+/* ===== ORDENAR POR ===== */
 .order-by {
   float: right;
   margin-right: 12%;
@@ -298,7 +385,7 @@ button:active { transform: translateY(0); }
 
 .error { color: #dc2626; }
 
-/* ===== SEÇÃO FORMULÁRIO DE PESQUISA ===== */
+/* ===== SEÇÃO FORMULÁRIO ===== */
 .secao-formulario {
   background: linear-gradient(135deg, #1558b0 0%, #1a73e8 60%, #0d9488 100%);
   padding: 3rem 2rem;
@@ -314,9 +401,7 @@ button:active { transform: translateY(0); }
   gap: 1rem;
 }
 
-.formulario-icone {
-  font-size: 2.5rem;
-}
+.formulario-icone { font-size: 2.5rem; }
 
 .formulario-texto h2 {
   color: #fff;
