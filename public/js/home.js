@@ -29,10 +29,10 @@ async function obterCoordenadasPorEndereco(endereco) {
   const response = await fetch(`/api/geocodificar?endereco=${encodeURIComponent(endereco)}`);
   if (!response.ok) {
     const err = await response.json();
-    throw new Error(err.erro || 'Falha na requisi\u00e7\u00e3o');
+    throw new Error(err.erro || 'Falha na requisição');
   }
   const data = await response.json();
-  if (!data.lat || !data.lng) throw new Error('Coordenadas inv\u00e1lidas');
+  if (!data.lat || !data.lng) throw new Error('Coordenadas inválidas');
   return data;
 }
 
@@ -59,9 +59,9 @@ async function buscarUnidades(e) {
     const aviso = document.createElement('div');
     aviso.className = 'aviso-endereco';
     aviso.innerHTML = `
-      <span>\u26a0\ufe0f</span>
-      <div>Endere\u00e7o incompleto. Inclua o <strong>bairro ou n\u00famero</strong> ap\u00f3s uma v\u00edrgula.<br>
-      <em>Exemplo: Rua das Flores, <strong>Bairro Centro</strong>, S\u00e3o Lu\u00eds</em></div>
+      <span>⚠️</span>
+      <div>Endereço incompleto. Inclua o <strong>bairro ou número</strong> após uma vírgula.<br>
+      <em>Exemplo: Rua das Flores, <strong>Bairro Centro</strong>, São Luís</em></div>
     `;
     inputEndereco.after(aviso);
     resultsContainer.innerHTML = '';
@@ -72,7 +72,7 @@ async function buscarUnidades(e) {
   const avisoAnterior = document.querySelector('.aviso-endereco');
   if (avisoAnterior) avisoAnterior.remove();
 
-  resultsContainer.innerHTML = '<div class="loading">Buscando unidades pr\u00f3ximas...</div>';
+  resultsContainer.innerHTML = '<div class="loading">Buscando unidades próximas...</div>';
 
   try {
     const coords = await obterCoordenadasPorEndereco(endereco);
@@ -109,20 +109,25 @@ function exibirResultados(unidades) {
     const card = document.createElement('div');
     card.className = 'result-card';
 
-    const enderecoExibido = unidade.endereco_gmaps || unidade.endereco || 'Endere\u00e7o n\u00e3o dispon\u00edvel';
+    const enderecoExibido = unidade.endereco_gmaps || unidade.endereco || 'Endereço não disponível';
     const distanciaKm = (unidade.distancia / 1000).toFixed(1);
 
-    // Especialidades como tags (m\u00e1ximo 4, depois mostra "+N")
+    // Monta todas as especialidades (ocultas por padrão)
     let tagsHtml = '';
     if (unidade.especialidades) {
       const lista = unidade.especialidades.split(';').map(e => e.trim()).filter(Boolean);
-      const visiveis = lista.slice(0, 4);
-      const extras = lista.length - visiveis.length;
-      tagsHtml = `
-        <div class="especialidades-tags">
-          ${visiveis.map(e => `<span class="tag-esp">${e}</span>`).join('')}
-          ${extras > 0 ? `<span class="tag-esp tag-mais">+${extras}</span>` : ''}
-        </div>`;
+      if (lista.length > 0) {
+        tagsHtml = `
+          <div class="especialidades-section">
+            <button class="btn-especialidades" aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              Ver especialidades (${lista.length})
+            </button>
+            <div class="especialidades-tags" style="display:none;">
+              ${lista.map(e => `<span class="tag-esp">${e}</span>`).join('')}
+            </div>
+          </div>`;
+      }
     }
 
     const botaoMaps = unidade.link_gmaps
@@ -159,6 +164,28 @@ function exibirResultados(unidades) {
       </div>
     `;
 
+    // Lógica de expandir/recolher especialidades
+    const btnEsp = card.querySelector('.btn-especialidades');
+    if (btnEsp) {
+      btnEsp.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const tagsDiv = card.querySelector('.especialidades-tags');
+        const aberto = btnEsp.getAttribute('aria-expanded') === 'true';
+
+        if (aberto) {
+          tagsDiv.style.display = 'none';
+          btnEsp.setAttribute('aria-expanded', 'false');
+          btnEsp.querySelector('svg').style.transform = 'rotate(0deg)';
+          btnEsp.innerHTML = btnEsp.innerHTML.replace('Ocultar especialidades', `Ver especialidades (${tagsDiv.querySelectorAll('.tag-esp').length})`);
+        } else {
+          tagsDiv.style.display = 'flex';
+          btnEsp.setAttribute('aria-expanded', 'true');
+          btnEsp.querySelector('svg').style.transform = 'rotate(180deg)';
+          btnEsp.innerHTML = btnEsp.innerHTML.replace(/Ver especialidades \(\d+\)/, 'Ocultar especialidades');
+        }
+      });
+    }
+
     container.appendChild(card);
   });
 }
@@ -167,5 +194,5 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarDadosDosBancos();
   const formBusca = document.getElementById('form-busca');
   if (formBusca) formBusca.addEventListener('submit', buscarUnidades);
-  else console.error('Elemento #form-busca n\u00e3o encontrado!');
+  else console.error('Elemento #form-busca não encontrado!');
 });
