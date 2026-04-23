@@ -170,6 +170,22 @@ nav ul li a.active {
   color: #475569;
 }
 
+.footer-fonte {
+    text-align: center;
+    padding: 0.5rem 1rem 1rem;
+    font-size: 0.78rem;
+    color: #475569;
+}
+
+.footer-fonte a {
+    color: #475569;
+    text-decoration: underline;
+}
+
+.footer-fonte a:hover {
+    color: #94a3b8;
+}
+
 /* ===== LUCIDE ICONS ===== */
 [data-lucide] {
   display: inline-block;
