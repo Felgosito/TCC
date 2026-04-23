@@ -9,6 +9,10 @@ export default async function handler(req, res) {
         u.nome,
         u.endereco,
         u.telefone,
+        u.horario,
+        u.cep,
+        u.endereco_gmaps,
+        u.link_gmaps,
         ST_X(u.coordenadas) as lng,
         ST_Y(u.coordenadas) as lat,
         ST_Distance(u.coordenadas::GEOGRAPHY, ST_MakePoint($1, $2)::GEOGRAPHY) as distancia
