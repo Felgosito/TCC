@@ -624,3 +624,26 @@ button:active { transform: translateY(0); }
   .formulario-texto h2 { font-size: 1.1rem; }
   .formulario-texto p { font-size: 0.85rem; }
 }
+
+
+/* ===== CORRIGE ESPAÇO VAZIO ABAIXO DO FOOTER ===== */
+html, body {
+  height: auto;
+  min-height: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* O conteúdo principal cresce para empurrar o footer para baixo */
+.main-container,
+.section-results {
+  flex: none;
+}
+
+footer,
+.footer {
+  margin-top: auto;
+}
