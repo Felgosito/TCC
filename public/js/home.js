@@ -119,22 +119,23 @@ function exibirResultados(unidades) {
     const enderecoExibido = unidade.endereco_gmaps || unidade.endereco || 'Endereço não disponível';
     const distanciaKm = (unidade.distancia / 1000).toFixed(1);
 
-    // Monta todas as especialidades (ocultas por padrão)
+    const temEspecialidades = unidade.especialidades &&
+      unidade.especialidades.split(';').map(e => e.trim()).filter(Boolean).length > 0;
+
+    // Monta as especialidades (ocultas por padrão, sem botão — o card inteiro expande)
     let tagsHtml = '';
-    if (unidade.especialidades) {
+    if (temEspecialidades) {
       const lista = unidade.especialidades.split(';').map(e => e.trim()).filter(Boolean);
-      if (lista.length > 0) {
-        tagsHtml = `
-          <div class="especialidades-section">
-            <button class="btn-especialidades" aria-expanded="false">
-              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-              Ver especialidades (${lista.length})
-            </button>
-            <div class="especialidades-tags" style="display:none;">
-              ${lista.map(e => `<span class="tag-esp">${e}</span>`).join('')}
-            </div>
-          </div>`;
-      }
+      tagsHtml = `
+        <div class="especialidades-section">
+          <p class="esp-hint">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Ver especialidades (${lista.length})
+          </p>
+          <div class="especialidades-tags" style="display:none;">
+            ${lista.map(e => `<span class="tag-esp">${e}</span>`).join('')}
+          </div>
+        </div>`;
     }
 
     const botaoMaps = unidade.link_gmaps
@@ -171,24 +172,31 @@ function exibirResultados(unidades) {
       </div>
     `;
 
-    // Lógica de expandir/recolher especialidades
-    const btnEsp = card.querySelector('.btn-especialidades');
-    if (btnEsp) {
-      btnEsp.addEventListener('click', (e) => {
-        e.stopPropagation();
+    // Clique no card inteiro expande/recolhe as especialidades
+    if (temEspecialidades) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', (e) => {
+        // Não interfere se clicar no botão do Google Maps
+        if (e.target.closest('.btn-maps')) return;
+
         const tagsDiv = card.querySelector('.especialidades-tags');
-        const aberto = btnEsp.getAttribute('aria-expanded') === 'true';
+        const hint = card.querySelector('.esp-hint');
+        const aberto = card.classList.contains('expandido');
 
         if (aberto) {
           tagsDiv.style.display = 'none';
-          btnEsp.setAttribute('aria-expanded', 'false');
-          btnEsp.querySelector('svg').style.transform = 'rotate(0deg)';
-          btnEsp.innerHTML = btnEsp.innerHTML.replace('Ocultar especialidades', `Ver especialidades (${tagsDiv.querySelectorAll('.tag-esp').length})`);
+          card.classList.remove('expandido');
+          hint.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            Ver especialidades (${tagsDiv.querySelectorAll('.tag-esp').length})
+          `;
         } else {
           tagsDiv.style.display = 'flex';
-          btnEsp.setAttribute('aria-expanded', 'true');
-          btnEsp.querySelector('svg').style.transform = 'rotate(180deg)';
-          btnEsp.innerHTML = btnEsp.innerHTML.replace(/Ver especialidades \(\d+\)/, 'Ocultar especialidades');
+          card.classList.add('expandido');
+          hint.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+            Ocultar especialidades
+          `;
         }
       });
     }
