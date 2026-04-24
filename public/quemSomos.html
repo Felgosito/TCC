@@ -3,50 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre</title>
-    <link rel="stylesheet" href="css/quemSomos.css">
-    
+    <title>UBS Local - Encontre unidades de saúde próximas</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <div id="header"></div>
 
-    <a href="index.html" class="back-btn"> Voltar </a>
-    
-    <div class="container">
-        <h1>Sobre o Projeto</h1>
+    <div class="main-container">
+        <div class="imagem-localiza">
+            <img src="imagens/img.jpeg" alt="localiza">
+        </div>
         
-        <p>Bem-vindo ao <strong>UBS Local</strong>, uma ferramenta desenvolvida para ajudar você a encontrar a <strong>Unidade Básica de Saúde (UBS)</strong> mais próxima com base no endereço fornecido.</p>
+        <h2>Encontre unidades de saúde próximas a você</h2>
+        <p>Busque UBS de saúde por endereço ou sua localização atual</p>
         
-        <h2>Objetivo</h2>
-        <p>Nosso objetivo é simplificar o acesso à informação sobre serviços de saúde pública, conectando rapidamente os usuários às unidades de atendimento mais próximas de sua localização. Com isso, esperamos contribuir para um atendimento mais ágil e eficiente, especialmente em situações de necessidade imediata.</p>
-        
-        <h2>Como Funciona?</h2>
-        <ul>
-            <li><strong>Informe seu endereço</strong>: Digite seu endereço completo ou parcial (rua, bairro, cidade).</li>
-            <li><strong>Busca inteligente</strong>: Nosso sistema utiliza geolocalização e dados atualizados para identificar a UBS mais próxima.</li>
-            <li><strong>Resultados detalhados</strong>: Visualize o nome da unidade, endereço, distância e, quando disponível, horários de funcionamento.</li>
-        </ul>
-        
-        <h2>Tecnologias Utilizadas</h2>
-        <ul>
-            <li>Integração com APIs de mapas (como Google Maps ou OpenStreetMap).</li>
-            <li>Banco de dados com informações atualizadas.</li>
-            <li>Interface intuitiva e acessível para todos os usuários.</li>
-        </ul>
-        
-        <h2>Público-Alvo</h2>
-        <ul>
-            <li>Pacientes em busca de atendimento rápido.</li>
-            <li>Familiares que precisam localizar unidades para seus dependentes.</li>
-            <li>Profissionais de saúde ou gestores que desejam otimizar a distribuição de recursos.</li>
-        </ul>
-        
-        <h2>Compromisso</h2>
-        <p>Este projeto é uma iniciativa para promover <strong>acesso democrático à saúde</strong>, aliando tecnologia e bem-estar social.</p>
-        
-        <p>Quer contribuir ou saber mais? <a href="sobre.html" class="contact-btn">Entre em contato conosco!</a></p>
+        <form id="form-busca">
+            <fieldset>
+                <div class="form-group">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" placeholder="Ex: Rua das Flores, Bairro Centro, São Luís">
+                    <div class="endereco-dica">
+                        <div class="dica-exemplos">
+                            <span class="dica-titulo"><i data-lucide="info" class="icon-xs"></i> Como digitar corretamente:</span>
+                            <div class="dica-linha correto">
+                                <span class="dica-badge ok"><i data-lucide="check" class="icon-xs"></i> Correto</span>
+                                <span>Rua das Flores, <strong>Bairro Centro</strong>, São Luís</span>
+                            </div>
+                            <div class="dica-linha correto">
+                                <span class="dica-badge ok"><i data-lucide="check" class="icon-xs"></i> Correto</span>
+                                <span>Av. Jereçó, <strong>123</strong>, Cohama, São Luís</span>
+                            </div>
+                            <div class="dica-linha errado">
+                                <span class="dica-badge erro"><i data-lucide="x" class="icon-xs"></i> Incompleto</span>
+                                <span>Rua das Flores <em>(sem bairro ou número)</em></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo de estabelecimento</label>
+                    <select id="tipo"><option value="">Todos os tipos</option></select>
+                </div>
+                <div class="form-group">
+                    <label for="especialidade">Especialidade (opcional)</label>
+                    <select id="especialidade"><option value="">Qualquer especialidade</option></select>
+                </div>
+                <div class="form-group">
+                    <label for="distancia">Distância máxima</label>
+                    <select id="distancia">
+                        <option value="5000">5 km</option>
+                        <option value="10000">10 km</option>
+                        <option value="20000">20 km</option>
+                    </select>
+                </div>
+            </fieldset>
+            <button type="submit"><i data-lucide="search"></i> Buscar unidades</button>
+        </form>
     </div>
-    
+
+    <div class="section-results" id="section-results" style="display:none">
+        <h2>Unidades de saúde próximas</h2>
+        <div class="order-by">
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar"><option>Mais próximo</option></select>
+        </div>
+        <div class="results-container"></div>
+    </div>
+
+    <section class="secao-formulario">
+        <div class="formulario-content">
+            <div class="formulario-icone"><i data-lucide="clipboard-list"></i></div>
+            <div class="formulario-texto">
+                <h2>Ajude na pesquisa!</h2>
+                <p>Usou o Saúde+? Compartilhe sua experiência respondendo ao formulário. Sua opinião é essencial para melhorar o sistema e contribui diretamente com o TCC.</p>
+            </div>
+            <a href="https://forms.gle/Q9jz47neXnYEgPXX9" target="_blank" rel="noopener" class="btn-formulario">
+                <i data-lucide="external-link"></i> Responder formulário
+            </a>
+        </div>
+    </section>
+
     <div id="footer"></div>
+    <script src="components/include-header-footer.js"></script>
+    <script src="js/home.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>lucide.createIcons();</script>
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </body>
 </html>
