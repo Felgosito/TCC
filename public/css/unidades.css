@@ -215,9 +215,149 @@ main { margin: 0; padding: 0; }
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
-    .unidades-hero h1 { font-size: 1.7rem; }
-    .unidade-card-body { grid-template-columns: 1fr; }
-    .unidade-card-body > p { grid-column: 1; }
-    .unidades-container { padding: 0 1rem; margin: 1.5rem 0 2rem; }
-    .unidades-tabela-wrapper { padding: 1.2rem; }
+  .unidades-hero {
+    padding: 2.5rem 1.2rem 4rem;
+  }
+
+  .unidades-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .unidade-card-body {
+    grid-template-columns: 1fr;
+    padding: 1.2rem;
+  }
+
+  .unidade-card-body > p {
+    grid-column: 1;
+  }
+
+  .unidades-container {
+    padding: 0 1rem;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .unidades-tabela-wrapper {
+    padding: 1.2rem;
+    overflow-x: auto;
+  }
+
+  .unidades-tabela {
+    min-width: 500px;
+  }
+
+  .unidade-card-header {
+    padding: 1rem 1.2rem;
+  }
+
+  .unidade-card-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .unidades-hero {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .unidades-hero h1 {
+    font-size: 1.4rem;
+  }
+
+  .unidades-hero p {
+    font-size: 0.93rem;
+  }
+
+  .unidades-tag {
+    font-size: 0.72rem;
+    padding: 4px 12px;
+  }
+
+  .unidades-container {
+    padding: 0 0.8rem;
+    gap: 1.2rem;
+  }
+
+  .unidade-card {
+    border-radius: 12px;
+  }
+
+  .unidade-card-header {
+    padding: 0.9rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .unidade-card-header h2 {
+    font-size: 1.05rem;
+  }
+
+  .unidade-subtitulo {
+    font-size: 0.8rem;
+  }
+
+  .unidade-icone [data-lucide] {
+    width: 28px;
+    height: 28px;
+  }
+
+  .unidade-card-body {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .unidade-card-body > p {
+    font-size: 0.9rem;
+  }
+
+  .unidade-quando h3,
+  .unidade-nao h3 {
+    font-size: 0.8rem;
+  }
+
+  .unidade-quando ul li,
+  .unidade-nao ul li {
+    font-size: 0.83rem;
+  }
+
+  .unidades-tabela-wrapper h2 {
+    font-size: 1rem;
+  }
+
+  .unidades-tabela {
+    font-size: 0.83rem;
+    min-width: 460px;
+  }
+}
+
+@media (max-width: 480px) {
+  .unidades-hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .unidades-hero p {
+    font-size: 0.88rem;
+  }
+
+  .unidade-card-header h2 {
+    font-size: 0.95rem;
+  }
+
+  .unidade-card-body > p {
+    font-size: 0.85rem;
+  }
+
+  .unidade-quando ul li,
+  .unidade-nao ul li {
+    font-size: 0.8rem;
+  }
+
+  .badge {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
+  .unidades-tabela {
+    font-size: 0.78rem;
+    min-width: 420px;
+  }
 }

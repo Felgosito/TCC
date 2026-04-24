@@ -278,18 +278,69 @@ nav ul li a.active {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  header {
+    padding: 0.7rem 0.8rem;
+  }
+
   .logo img {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
   }
 
   .logo h1 {
     font-size: 1rem;
   }
 
+  nav ul {
+    gap: 0.2rem;
+  }
+
   nav ul li a {
+    font-size: 0.79rem;
+    padding: 5px 9px;
+  }
+
+  .footer-container {
+    gap: 1.2rem;
+  }
+
+  .footer {
+    padding: 1.5rem 1rem 0;
+  }
+
+  .footer-bottom,
+  .footer-fonte {
+    font-size: 0.75rem;
+    padding: 0.8rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo h1 {
+    font-size: 0.92rem;
+  }
+
+  nav ul li a {
+    font-size: 0.74rem;
+    padding: 4px 7px;
+  }
+
+  .footer-links h4,
+  .footer-contato h4 {
     font-size: 0.78rem;
-    padding: 4px 8px;
+  }
+
+  .footer-email {
+    font-size: 0.82rem;
+  }
+
+  .footer-info {
+    font-size: 0.76rem;
   }
 }

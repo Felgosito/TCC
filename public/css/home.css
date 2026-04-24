@@ -438,45 +438,6 @@ button:active { transform: translateY(0); }
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
-  .main-container { padding: 1.5rem 1.2rem; margin: 1.5rem 1rem; }
-  .results-container { margin: 0 4%; gap: 14px; }
-  .section-results h2 { margin: 0 4% 1.2rem; }
-  .order-by { margin-right: 4%; }
-  .result-card { width: 100%; }
-  .dica-linha { flex-wrap: wrap; }
-  .secao-formulario { padding: 2rem 1.2rem; }
-}
-
-/* ===== BOTÃO ESPECIALIDADES ===== */
-.btn-especialidades {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #0369a1;
-  padding: 0;
-  margin-top: 8px;
-}
-
-.btn-especialidades svg {
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.especialidades-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 6px;
-}
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 768px) {
-  /* Formulário */
   .main-container {
     padding: 1.2rem 1rem;
     margin: 1rem 0.8rem;
@@ -507,7 +468,6 @@ button:active { transform: translateY(0); }
     display: none;
   }
 
-  /* Resultados */
   .section-results {
     padding: 1.5rem 0 2.5rem;
     margin-top: 1.5rem;
@@ -531,21 +491,86 @@ button:active { transform: translateY(0); }
   }
 
   .order-by {
-    margin-right: 1rem;
-    font-size: 0.82rem;
+    float: none;
+    margin: 0 1rem 1rem;
   }
 
-  /* Botão de busca */
   button[type="submit"] {
     font-size: 0.95rem;
     padding: 0.8rem 1.2rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-container {
+    margin: 0.8rem 0.6rem;
+    padding: 1rem 0.9rem;
+    border-radius: 10px;
+  }
+
+  .main-container > h2 {
+    font-size: 1rem;
+  }
+
+  .main-container > p {
+    font-size: 0.88rem;
+  }
+
+  fieldset {
+    padding: 0.9rem 0.8rem;
+  }
+
+  .form-group label {
+    font-size: 0.82rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.65rem 0.8rem;
+    font-size: 0.92rem;
+  }
+
+  .endereco-dica {
+    padding: 10px 11px;
+  }
+
+  .dica-titulo {
+    font-size: 0.78rem;
+  }
+
+  .dica-linha {
+    font-size: 0.78rem;
+  }
+
+  .formulario-texto h2 {
+    font-size: 1.2rem;
+  }
+
+  .formulario-texto p {
+    font-size: 0.9rem;
+  }
+
+  .btn-formulario {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .section-results h2 {
+    font-size: 0.95rem;
+  }
+
+  .results-container {
+    margin: 0 0.6rem;
+    gap: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .main-container {
-    margin: 0.8rem 0.5rem;
-    padding: 1rem 0.8rem;
+    margin: 0.5rem 0.3rem;
+    padding: 0.9rem 0.7rem;
+    border-radius: 8px;
   }
 
   .card-header h3 {
@@ -564,9 +589,32 @@ button:active { transform: translateY(0); }
 
   .btn-maps {
     font-size: 0.78rem;
+    padding: 5px 10px;
+  }
+
+  .distance {
+    font-size: 0.72rem;
+    padding: 3px 8px;
   }
 
   .section-results h2 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .secao-formulario {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .formulario-texto h2 {
+    font-size: 1.1rem;
+  }
+
+  .formulario-texto p {
+    font-size: 0.85rem;
   }
 }
