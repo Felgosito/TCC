@@ -183,15 +183,13 @@ button:hover {
 button:active { transform: translateY(0); }
 
 /* ===== SEÇÃO DE RESULTADOS ===== */
-/* Quando vazia (sem cards), não ocupa espaço */
 .section-results {
   background: var(--fundo);
   padding: 0;
   margin-top: 0;
 }
 
-/* Só mostra padding/espaço quando tem resultados */
-.section-results:not(:empty) {
+.section-results.visivel {
   padding: 2.5rem 0 3.5rem;
   margin-top: 2.5rem;
 }
@@ -512,7 +510,7 @@ button:active { transform: translateY(0); }
   .formulario-icone-wrapper { display: none; }
 
   /* Resultados só recebe padding quando não estiver vazio */
-  .section-results:not(:empty) {
+  .section-results.visivel {
     padding: 1.5rem 0 2.5rem;
     margin-top: 1.2rem;
   }

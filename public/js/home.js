@@ -39,6 +39,7 @@ async function obterCoordenadasPorEndereco(endereco) {
 async function buscarUnidades(e) {
   e.preventDefault();
 
+  const sectionResults = document.getElementById('section-results');
   const endereco = document.getElementById('endereco').value.trim();
   const tipo = document.getElementById('tipo').value;
   const especialidade = document.getElementById('especialidade').value;
@@ -47,6 +48,8 @@ async function buscarUnidades(e) {
 
   if (!endereco) {
     resultsContainer.innerHTML = '';
+    sectionResults.style.display = 'none';
+    sectionResults.classList.remove('visivel');
     document.getElementById('endereco').classList.add('input-erro');
     return;
   }
@@ -65,6 +68,8 @@ async function buscarUnidades(e) {
     `;
     inputEndereco.after(aviso);
     resultsContainer.innerHTML = '';
+    sectionResults.style.display = 'none';
+    sectionResults.classList.remove('visivel');
     return;
   }
 
@@ -73,6 +78,8 @@ async function buscarUnidades(e) {
   if (avisoAnterior) avisoAnterior.remove();
 
   resultsContainer.innerHTML = '<div class="loading">Buscando unidades próximas...</div>';
+  sectionResults.style.display = '';
+  sectionResults.classList.add('visivel');
 
   try {
     const coords = await obterCoordenadasPorEndereco(endereco);
