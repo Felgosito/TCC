@@ -209,9 +209,8 @@ button:active { transform: translateY(0); }
 }
 
 .results-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
   margin: 0 6%;
 }
@@ -222,7 +221,7 @@ button:active { transform: translateY(0); }
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(26,115,232,0.08);
   border: 1px solid #e2e8f0;
-  width: 340px;
+  width: 100%;      
   min-width: 0;
   max-width: 100%;
   display: flex;
@@ -525,11 +524,10 @@ button:active { transform: translateY(0); }
     font-size: 1rem;
   }
 
-  .results-container {
+   .results-container {
+    grid-template-columns: 1fr;   /* ← 1 coluna no celular */
     margin: 0 0.8rem;
     gap: 12px;
-    flex-direction: column;
-    align-items: stretch;
   }
 
   .result-card {
