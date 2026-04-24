@@ -223,9 +223,12 @@ button:active { transform: translateY(0); }
   box-shadow: 0 2px 12px rgba(26,115,232,0.08);
   border: 1px solid #e2e8f0;
   width: 280px;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  word-break: break-word;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -239,8 +242,8 @@ button:active { transform: translateY(0); }
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 10px;
-  padding: 16px 16px 10px;
+  gap: 8px;
+  padding: 14px 14px 10px;
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -251,6 +254,9 @@ button:active { transform: translateY(0); }
   margin: 0;
   line-height: 1.35;
   flex: 1;
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ===== DISTÂNCIA — sem quebra de linha ===== */
@@ -315,7 +321,8 @@ button:active { transform: translateY(0); }
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-top: 4px;
+  margin-top: 6px;
+  max-width: 100%;
 }
 
 .tag-esp {
@@ -328,6 +335,9 @@ button:active { transform: translateY(0); }
   padding: 2px 8px;
   white-space: nowrap;
   line-height: 1.5;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tag-mais {
@@ -434,6 +444,43 @@ button:active { transform: translateY(0); }
 .btn-formulario:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== BOTÃO ESPECIALIDADES ===== */
+.btn-especialidades {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: linear-gradient(90deg, #1a73e8, #1558b0);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: none;
+  letter-spacing: 0.2px;
+  transition: opacity 0.2s;
+}
+
+.btn-especialidades:hover {
+  opacity: 0.88;
+  transform: none;
+}
+
+.btn-especialidades svg {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  transition: transform 0.2s ease;
 }
 
 /* ===== RESPONSIVO ===== */
